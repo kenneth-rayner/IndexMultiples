@@ -2,13 +2,16 @@ object HeadsAndLegs {
 
   def chickensAndCows(heads: Int, legs: Int): Any = {
 
-    legs match {
-      case x if x % 2 == 1 => "No possible solution"
-      case x if x / heads == 2 => (heads, 0)
-      case x if x / heads == 4 => (0, heads)
+    if (legs % 2 == 0) {
+      val numCows = (legs - (2 * heads)) / 2
+      val numChickens = heads - numCows
 
-
-        }
+      if ((numChickens >= 0) && (numCows >= 0)) {
+        (numChickens,numCows)
+      }
+      else
+        "No solution found"
     }
-  
+    else "No solution found"
+  }
 }
