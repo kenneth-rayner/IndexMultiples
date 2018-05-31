@@ -15,25 +15,25 @@ object Cypher {
     input.toList.map(x => convertToInt(x))
   }
 
-  def keyString(input: String, key: Int): Int = {
+  def keyString(input: String, key: Int): String = {
 
     val multiplier =input.length / key.toString.length
     val remainder = input.length % key.toString.length
     val endOfKey = key.toString.take(remainder).toString
     val newKey= key.toString*multiplier + endOfKey
-     newKey.toInt
+     newKey
   }
-  def splitKey(key: Int): Array[Int] = {
-    key.toString.map(_.asDigit).toArray
+  def splitKey(input:String,key: Int): List[Char] = {
+ keyString(input,key).toList
   }
-  def splitKeyToArray(input:String,key:Int):Array[Int]={
-   splitKey(keyString(input,key))
+  def splitKeyToList(input:String,key:Int):List[Int]={
+    splitKey(input,key).map(x=>x.toString.toInt)
   }
   def encode(input1:List[Int],input2: List [Int]):List[Int]= {
     (input1,input2).zipped.map(_ + _)
   }
   def encodeAnswer(input:String,key:Int):List[Int]= {
-    (stringToInts(input),splitKeyToArray(input,key)).zipped.map(_ + _)
+    (stringToInts(input),splitKeyToList(input,key)).zipped.map(_ + _)
   }
 
 }
