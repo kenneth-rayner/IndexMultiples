@@ -28,7 +28,7 @@ class CypherSpec extends WordSpec with MustMatchers {
     }
     "return an List of digits" when {
       "given a string of numbers" in {
-        Cypher.splitKey("Hi",2) mustEqual List('2','2')
+        Cypher.splitKey("Hi", 2) mustEqual List('2', '2')
       }
     }
     "return the keyString as an array of digits of the right length:" when {
